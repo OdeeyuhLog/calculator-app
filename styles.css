@@ -98,7 +98,8 @@ body {
   grid-column: 3 / span 2;
 }
 
-.number {
+.number,
+.dot {
   color: gray;
 }
 
@@ -108,7 +109,8 @@ body {
 }
 
 .number:hover,
-.operation:hover {
+.operation:hover,
+.dot:hover {
   background-color: rgb(175, 173, 173);
 }
 

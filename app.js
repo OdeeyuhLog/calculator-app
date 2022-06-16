@@ -29,19 +29,26 @@ function divide(num1, num2) {
 // Main computation function; accept two number values and the desired operation.
 function operate(currentOperation, num1, num2) {
   let result;
-  switch (currentOperation) {
-    case 'addition':
-      result = add(num1, num2);
-      break;
-    case 'subtraction':
-      result = subtract(num1, num2);
-      break;
-    case 'multiplication':
-      result = multiply(num1, num2);
-      break;
-    case 'division':
-      result = divide(num1, num2);
-      break;
+
+  if (num2 === 0) {
+    alert('WARNING: Do not divide by zero.');
+    clearData();
+    showDisplay();
+  } else {
+    switch (currentOperation) {
+      case 'addition':
+        result = add(num1, num2);
+        break;
+      case 'subtraction':
+        result = subtract(num1, num2);
+        break;
+      case 'multiplication':
+        result = multiply(num1, num2);
+        break;
+      case 'division':
+        result = divide(num1, num2);
+        break;
+    }
   }
 
   result = roundValue(result);
@@ -88,6 +95,9 @@ function pressButton() {
         showDisplay();
       } else if (button.classList.contains('negative')) {
         turnNegative();
+        showDisplay();
+      } else if (button.classList.contains('dot')) {
+        addDot();
         showDisplay();
       }
     });
@@ -138,24 +148,28 @@ function chooseOperator(operator) {
 function inputAnswer() {
   secondNum = inputValue;
 
-  let result = operate(currentOperator, Number(firstNum), Number(secondNum));
-  let operator;
-  switch (currentOperator) {
-    case 'addition':
-      operator = '+';
-      break;
-    case 'subtraction':
-      operator = '-';
-      break;
-    case 'multiplication':
-      operator = 'x';
-      break;
-    case 'division':
-      operator = '/';
-      break;
+  if (firstNum === null || secondNum === null) {
+    alert('Enter your values please.');
+  } else {
+    let result = operate(currentOperator, Number(firstNum), Number(secondNum));
+    let operator;
+    switch (currentOperator) {
+      case 'addition':
+        operator = '+';
+        break;
+      case 'subtraction':
+        operator = '-';
+        break;
+      case 'multiplication':
+        operator = 'x';
+        break;
+      case 'division':
+        operator = '/';
+        break;
+    }
+    prevDisplay.textContent = `${firstNum} ${operator} ${secondNum} =`;
+    inputValue = result;
   }
-  prevDisplay.textContent = `${firstNum} ${operator} ${secondNum} =`;
-  inputValue = result;
 }
 
 // Backspace feature
@@ -177,4 +191,14 @@ function clearData() {
 // Allows user to input negative integers
 function turnNegative() {
   inputValue = inputValue * -1;
+}
+
+// Add dot, disable if there is already a dot
+function addDot() {
+  const dotbtn = document.querySelector('.dot');
+  if (inputValue.indexOf('.') === -1) {
+    inputValue += dotbtn.dataset.value;
+  } else {
+    return;
+  }
 }
