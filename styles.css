@@ -43,6 +43,25 @@ body {
   width: 25rem;
   border-radius: 1rem;
   border: 5px solid rgba(0, 0, 0, 0.37);
+  font-family: 'Kdam Thmor Pro', sans-serif;
+  padding: 0.5rem;
+  padding-top: 1rem;
+  text-align: right;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.display h1 {
+  font-family: 'Kdam Thmor Pro', sans-serif;
+  position: relative;
+
+  height: 1rem;
+}
+
+.display p {
+  position: relative;
+  bottom: 10%;
 }
 
 .buttons {
@@ -65,16 +84,20 @@ body {
   transition: 0.2s ease-in-out;
 }
 
-#operation {
+.operation {
   color: rgb(63, 201, 155);
 }
 
-#equals {
+.negative {
+  color: rgb(63, 201, 155);
+}
+
+.equals {
   background-color: rgb(242, 245, 106);
   grid-column: 3 / span 2;
 }
 
-#number {
+.number {
   color: gray;
 }
 
@@ -83,12 +106,12 @@ body {
   color: white;
 }
 
-#number:hover,
-#operation:hover {
+.number:hover,
+.operation:hover {
   background-color: rgb(175, 173, 173);
 }
 
-#equals:hover {
+.equals:hover {
   background-color: rgb(242, 245, 73);
 }
 
