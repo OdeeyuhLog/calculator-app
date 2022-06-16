@@ -26,6 +26,7 @@ function divide(num1, num2) {
   return Number(num1 / num2);
 }
 
+// Main computation function; accept two number values and the desired operation.
 function operate(currentOperation, num1, num2) {
   let result;
   switch (currentOperation) {
@@ -48,6 +49,7 @@ function operate(currentOperation, num1, num2) {
   return parseFloat(result);
 }
 
+// Evaluate if a decimal, if yes, round to two decimal places.
 function roundValue(value) {
   let result = value - Math.floor(value) !== 0;
 
@@ -58,6 +60,7 @@ function roundValue(value) {
   }
 }
 
+// Updates the display
 function showDisplay() {
   if (inputValue.length === 10) {
     mainDisplay.textContent = inputValue.substring(0, 10);
@@ -65,6 +68,7 @@ function showDisplay() {
   mainDisplay.innerText = inputValue;
 }
 
+// Activate the corresponding function according to the pressed button.
 function pressButton() {
   btns.forEach((button) => {
     button.addEventListener('click', () => {
@@ -91,6 +95,7 @@ function pressButton() {
 }
 pressButton();
 
+// Evaluate the current conditions and how the numbers will be displayed properly
 function displayNumbers(number) {
   if (currentOperator === null) {
     if (inputValue === null) {
@@ -107,6 +112,7 @@ function displayNumbers(number) {
   }
 }
 
+// Process the chosen operator
 function chooseOperator(operator) {
   if (currentOperator === null && prevOperator === null) {
     currentOperator = operator;
@@ -128,6 +134,7 @@ function chooseOperator(operator) {
   }
 }
 
+// Function that displays the answer and its corresponding equation.
 function inputAnswer() {
   secondNum = inputValue;
 
@@ -151,10 +158,12 @@ function inputAnswer() {
   inputValue = result;
 }
 
+// Backspace feature
 function backspace() {
   inputValue = inputValue.slice(0, inputValue.length - 1);
 }
 
+// Reset feature
 function clearData() {
   inputValue = null;
   currentOperator = null;
@@ -165,6 +174,7 @@ function clearData() {
   mainDisplay.textContent = null;
 }
 
+// Allows user to input negative integers
 function turnNegative() {
   inputValue = inputValue * -1;
 }
